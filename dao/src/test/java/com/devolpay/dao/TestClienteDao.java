@@ -23,8 +23,6 @@ public class TestClienteDao {
     @Autowired
     private ClienteDaoInter clienteDaoInter;
     @Autowired
-    private ClienteDaoImpl clienteRepository;
-    @Autowired
     private MongoTemplate mongoTemplate;
 
     @Before
@@ -34,8 +32,18 @@ public class TestClienteDao {
 
     @Test
     public void testGetAllClientes() {
-        mongoTemplate.save(new Cliente("1","72087008","Nat"));
-        mongoTemplate.save(new Cliente("2","12345678","Jin"));
+        Cliente cliente1 = new Cliente();
+        cliente1.setId("1");
+        cliente1.setDni("72087008");
+        cliente1.setName("Nat");
+
+        Cliente cliente2 = new Cliente();
+        cliente2.setId("2");
+        cliente2.setDni("12345678");
+        cliente2.setName("Jin");
+
+        mongoTemplate.save(cliente1);
+        mongoTemplate.save(cliente2);
 
         List<Cliente> clients = clienteDaoInter.getALlClientes();
 
@@ -52,7 +60,12 @@ public class TestClienteDao {
     @Test
     public void testGetUserById() {
         // Insertar un usuario con el ID "1" en la base de datos de prueba
-        mongoTemplate.save(new Cliente("1","72087008","Nat"));
+        Cliente cliente1 = new Cliente();
+        cliente1.setId("1");
+        cliente1.setDni("72087008");
+        cliente1.setName("Nat");
+
+        mongoTemplate.save(cliente1);
 
         // Obtener el usuario con ID "1" utilizando el método getUserById()
         Cliente cliente = clienteDaoInter.getClienteById("1");
@@ -65,7 +78,10 @@ public class TestClienteDao {
     @Test
     public void testSaveUser() {
         // Crear un nuevo usuario y guardarlo en la base de datos utilizando el método saveUser()
-        Cliente cliente = new Cliente("1","72087008","Nat");
+        Cliente cliente = new Cliente();
+        cliente.setId("1");
+        cliente.setDni("72087008");
+        cliente.setName("Nat");
         clienteDaoInter.saveCliente(cliente);
 
         // Obtener el usuario recién guardado utilizando el método getUserById()
@@ -79,7 +95,12 @@ public class TestClienteDao {
     @Test
     public void testDeleteUser() {
         // Insertar un usuario con el ID "1" en la base de datos de prueba
-        mongoTemplate.save(new Cliente("1","72087008","Nat"));
+        Cliente cliente1 = new Cliente();
+        cliente1.setId("1");
+        cliente1.setDni("72087008");
+        cliente1.setName("Nat");
+
+        mongoTemplate.save(cliente1);
 
         // Eliminar el usuario con ID "1" utilizando el método deleteUser()
         clienteDaoInter.deleteCliente("1");

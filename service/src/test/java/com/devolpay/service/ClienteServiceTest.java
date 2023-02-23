@@ -26,15 +26,21 @@ public class ClienteServiceTest {
 
     @Test
     public void testAgregarCliente() {
-        Cliente cliente = new Cliente("1", "72087008", "Nat");
+        Cliente cliente = new Cliente();
+        cliente.setId("1");
+        cliente.setDni("72087008");
+        cliente.setName("Nat");
         clienteService.saveCliente(cliente);
         assertNotNull(cliente.getId());
         clienteService.deleteCliente("1");
     }
 
     @Test
-    public void testBuscarClientePorEmail() {
-        Cliente cliente = new Cliente("1", "72087008", "Nat");
+    public void testBuscarClientePorId() {
+        Cliente cliente = new Cliente();
+        cliente.setId("1");
+        cliente.setDni("72087008");
+        cliente.setName("Nat");
         clienteService.saveCliente(cliente);
         Cliente clienteEncontrado = clienteService.getClienteById("1");
         assertEquals(cliente, clienteEncontrado);
@@ -43,7 +49,10 @@ public class ClienteServiceTest {
 
     @Test
     public void testEliminarCliente() {
-        Cliente cliente = new Cliente("1", "72087008", "Nat");
+        Cliente cliente = new Cliente();
+        cliente.setId("1");
+        cliente.setDni("72087008");
+        cliente.setName("Nat");
         clienteService.saveCliente(cliente);
         clienteService.deleteCliente(cliente.getId());
     }

@@ -11,6 +11,7 @@ import java.util.List;
 @Component
 @Service
 public class ClienteServiceImpl implements ClienteService {
+
     private final ClienteDaoInter clienteDaoInter;
 
     public ClienteServiceImpl(ClienteDaoInter clienteDaoInter) {

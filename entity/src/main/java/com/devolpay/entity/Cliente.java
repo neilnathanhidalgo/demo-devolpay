@@ -3,6 +3,8 @@ package com.devolpay.entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -30,9 +32,5 @@ public class Cliente implements Serializable {
     private String telef;
     private String direccion;
 
-    public Cliente(String id, String dni, String name) {
-        this.id = id;
-        this.dni = dni;
-        this.name = name;
-    }
+
 }
