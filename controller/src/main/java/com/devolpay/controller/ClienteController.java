@@ -1,13 +1,9 @@
 package com.devolpay.controller;
 
-import com.devolpay.config.ConfigMongo;
-import com.devolpay.dao.impl.ClienteDaoImpl;
 import com.devolpay.entity.Cliente;
 import com.devolpay.inter.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,11 +14,6 @@ import java.util.List;
 public class ClienteController {
     @Autowired
     private ClienteService clienteService;
-
-    @Autowired
-    public ClienteController(ClienteService clienteService) {
-        this.clienteService = clienteService;
-    }
 
     @GetMapping
     public List<Cliente> getAllClientes() {
@@ -39,10 +30,11 @@ public class ClienteController {
         }
     }
     @PostMapping
-    public ResponseEntity<Void> saveCliente(@RequestBody Cliente cliente) {
+    public ResponseEntity<Cliente> saveCliente(@RequestBody Cliente cliente) {
         clienteService.saveCliente(cliente);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(cliente);
     }
+
     //curl -X POST -H "Content-Type: application/json" -d '{"dni":"12345678","name":"Nat","lastname":"Hidalgo"}' http://localhost:8080/clientes
 
     /*@PutMapping("/{id}")
