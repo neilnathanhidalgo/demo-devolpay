@@ -1,0 +1,4 @@
+com\devolpay\entity\Cliente.class
+com\devolpay\entity\GlobalEntityPkNumeric.class
+com\devolpay\config\ConfigEntity.class
+com\devolpay\entity\GlobalEntityPkString.class
