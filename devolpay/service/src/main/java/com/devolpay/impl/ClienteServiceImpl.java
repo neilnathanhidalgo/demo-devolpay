@@ -1,5 +1,6 @@
 package com.devolpay.impl;
 
+import ch.qos.logback.core.net.server.Client;
 import com.devolpay.dao.inter.ClienteDaoInter;
 import com.devolpay.entity.Cliente;
 import com.devolpay.inter.ClienteService;
@@ -37,6 +38,7 @@ public class ClienteServiceImpl implements ClienteService {
     public void updateCliente(Cliente cliente) {
         clienteDaoInter.updateCliente(cliente);
     }
+
     @Override
     public void deleteAllClientes(){
         clienteDaoInter.deleteAllClientes(); }
